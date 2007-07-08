@@ -1,0 +1,22 @@
+#summary How to edit Flurries.
+#labels Phase-Deploy
+
+= Introduction =
+
+Adding new flurries is quite easy by editing the *.config.
+
+
+= Details =
+
+ Find something like this: *"<setting name="ExtraFlurries" serializeAs="Xml">"*.
+ From there, you can see *"<string>Cyclic Something:{32,blue,200.0,3.0}</string>"*.
+
+  * *"Cyclic Something"* is the name of the Flurry cluster,
+  * *"32"* is the number of streams,
+  * *"blue"* is the color mode defined in Types.cs :
+     (red,magenta,blue,cyan,green,yellow,slowCyclic,cyclic,tiedye,rainbow,white,multi,dark)
+  * *"200"* is the thickness of flurry ,
+  * *"3.0"* is the speed.
+
+
+
