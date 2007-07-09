@@ -1,12 +1,9 @@
 #summary How to edit Flurries.
 #labels Phase-Deploy
 
-= Introduction =
+= Getting dirty =
 
 Adding new flurries is quite easy by editing the *.config.
-
-
-= Details =
 
  Find something like this: *"<setting name="ExtraFlurries" serializeAs="Xml">"*.
  From there, you can see *"<string>Cyclic Something:{32,blue,200.0,3.0}</string>"*.
@@ -18,5 +15,8 @@ Adding new flurries is quite easy by editing the *.config.
   * *"200"* is the thickness of flurry ,
   * *"3.0"* is the speed.
 
+  For example 
+  *<string>hypnotic threesome + 1:{32,blue,200.0,6.0};{32,green,200.0,6.0};{32,red,200.0,6.0};{32,rainbow,200.0,6.0}</string>*
+  defines 4 different flurries to be rendered.
 
-
+  Note that .NET 2.0 might save the settings under *%USERPROFILE%\Local Settings\Application Data\FlurrySharp\gibberish_text_about_version_and_config_owner* in *user.config*.
