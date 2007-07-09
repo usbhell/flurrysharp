@@ -16,7 +16,7 @@ Adding new flurries is quite easy by editing the *.config.
   * *"3.0"* is the speed.
 
   For example 
-  *<string>hypnotic threesome + 1:{32,blue,200.0,6.0};{32,green,200.0,6.0};{32,red,200.0,6.0};{32,rainbow,200.0,6.0}</string>*  
+  * *<string>hypnotic threesome + 1:{32,blue,200.0,6.0};{32,green,200.0,6.0};{32,red,200.0,6.0};{32,rainbow,200.0,6.0}</string>*  
 
   defines 4 different flurries to be rendered.
 
