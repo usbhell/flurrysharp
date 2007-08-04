@@ -101,8 +101,6 @@ namespace FlurrySharp
 		{
 			this.Invalidate();
 			this.Update();
-			
-			
 		}
 
 

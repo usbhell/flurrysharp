@@ -18,24 +18,24 @@ namespace FlurrySharp
 	public struct floatToVector
 	{
 		public float[]f;
-        public floatToVector(int size)
-        {
-            f = new float[4];
-            for(int i=0;i<4;i++)
-                f[i]=0;
-        }
-    }
+		public floatToVector(int size)
+		{
+			f = new float[4];
+			for(int i=0;i<4;i++)
+				f[i]=0;
+		}
+	}
 
-    [StructLayout(LayoutKind.Sequential)]
-    public struct intToVector
+	[StructLayout(LayoutKind.Sequential)]
+	public struct intToVector
 	{
 		public int[]i;
-        public intToVector(int size)
-        {
-            i = new int[4];
-            for (int a = 0; a < 4; a++)
-                i[a] = 0;
-        }
+		public intToVector(int size)
+		{
+			i = new int[4];
+			for (int a = 0; a < 4; a++)
+				i[a] = 0;
+		}
 	}
 
 	public class SmokeParticleV
@@ -47,23 +47,23 @@ namespace FlurrySharp
 		public intToVector dead=new intToVector(4);
 		public floatToVector time=new floatToVector(4);
 		public intToVector animFrame=new intToVector(4);
-        public SmokeParticleV()
-        {
-            for (int i = 0; i < delta.Length; i++)
-                delta[i] = new floatToVector(4);
+		public SmokeParticleV()
+		{
+			for (int i = 0; i < delta.Length; i++)
+				delta[i] = new floatToVector(4);
 
-            for (int i = 0; i < oldposition.Length; i++)
-                oldposition[i] = new floatToVector(4);
+			for (int i = 0; i < oldposition.Length; i++)
+				oldposition[i] = new floatToVector(4);
 
-            for (int i = 0; i < position.Length; i++)
-                position[i] = new floatToVector(4);
+			for (int i = 0; i < position.Length; i++)
+				position[i] = new floatToVector(4);
 
-            for (int i = 0; i < color.Length; i++)
-                color[i] = new floatToVector(4);
-        }
-    }
+			for (int i = 0; i < color.Length; i++)
+				color[i] = new floatToVector(4);
+		}
+	}
 
-    public class SmokeV
+	public class SmokeV
 	{
 		public SmokeParticleV [] particles;
 		public int nextParticle;
@@ -72,18 +72,18 @@ namespace FlurrySharp
 		public bool firstTime;
 		public long frame;
 		public float[] old;
-        
-		public floatToVector[] seraphimVertices;
-        
-        [MarshalAs(UnmanagedType.LPStruct)]
-		public floatToVector[] seraphimColors;
+		
+		public /*floatToVector*/float[,] seraphimVertices;
+		
+		//[MarshalAs(UnmanagedType.LPStruct)]
+		public /*floatToVector[]*/float[,] seraphimColors;
 
 		public float[] seraphimTextures;
 		
 		public SmokeV(int NUMSMOKEPARTICLES){
 			particles=new SmokeParticleV[NUMSMOKEPARTICLES / 4];
-            for (int i = 0; i < particles.Length; i++)
-                particles[i] = new SmokeParticleV();
+			for (int i = 0; i < particles.Length; i++)
+				particles[i] = new SmokeParticleV();
 
 			nextParticle=0;
 			nextSubParticle=0;
@@ -91,18 +91,18 @@ namespace FlurrySharp
 			firstTime=true;
 			frame=0;
 			old=new float[3];
-			seraphimVertices=new floatToVector[NUMSMOKEPARTICLES * 2 + 1];
-            
-            for (int i = 0; i < seraphimVertices.Length; i++)
-                seraphimVertices[i] = new floatToVector(4);
+			seraphimVertices=new /*floatToVector*/float[NUMSMOKEPARTICLES * 2 + 1,4];
+			
+			//            for (int i = 0; i < seraphimVertices.Length; i++)
+			//                seraphimVertices[i] = new floatToVector(4);
 
-			seraphimColors=new floatToVector[NUMSMOKEPARTICLES * 4 + 1];
-            for (int i = 0; i < seraphimColors.Length; i++)
-                seraphimColors[i] = new floatToVector(4);
+			seraphimColors=new /*floatToVector*/float[NUMSMOKEPARTICLES * 4 + 1,4];
+			//for (int i = 0; i < seraphimColors.Length; i++)
+			//    seraphimColors[i] = new floatToVector(4);
 
 			seraphimTextures=new float[NUMSMOKEPARTICLES * 2 * 4];
 		}
-	} 
+	}
 	
 	/// <summary>
 	/// Description of Smoke.
@@ -283,7 +283,7 @@ namespace FlurrySharp
 		}
 		
 		
-        //TODO Release throws memory corrupt exception
+		//TODO Release throws memory corrupt exception
 		public void DrawSmoke_Scalar()
 		{
 			int svi = 0;
@@ -350,7 +350,8 @@ namespace FlurrySharp
 						}
 						
 						{
-							floatToVector cmv=new floatToVector(4);
+							//floatToVector cmv=new floatToVector(4);
+							float[]cmv=new float[4];
 							float cm;
 							float m = 1.0f + sm;
 							
@@ -378,16 +379,17 @@ namespace FlurrySharp
 								smokev.particles[i].dead.i[k] = TRUE;
 							}
 							si++;
-							cmv.f[0] = smokev.particles[i].color[0].f[k]*cm;
-							cmv.f[1] = smokev.particles[i].color[1].f[k]*cm;
-							cmv.f[2] = smokev.particles[i].color[2].f[k]*cm;
-							cmv.f[3] = smokev.particles[i].color[3].f[k]*cm;
+							cmv[0] = smokev.particles[i].color[0].f[k]*cm;
+							cmv[1] = smokev.particles[i].color[1].f[k]*cm;
+							cmv[2] = smokev.particles[i].color[2].f[k]*cm;
+							cmv[3] = smokev.particles[i].color[3].f[k]*cm;
 							
 							{
 								int ii, jj;
 								for (jj = 0; jj < 4; jj++) {
 									for (ii = 0; ii < 4; ii++) {
-										smokev.seraphimColors[sci].f[ii] = cmv.f[ii];
+										//smokev.seraphimColors[sci].f[ii] = cmv.f[ii];
+										smokev.seraphimColors[sci,ii] = cmv[ii];
 									}
 									sci += 1;
 								}
@@ -403,53 +405,30 @@ namespace FlurrySharp
 							smokev.seraphimTextures[sti++] = u1;
 							smokev.seraphimTextures[sti++] = v0;
 							
-							smokev.seraphimVertices[svi].f[0] = sx+dxm-dys;
-							smokev.seraphimVertices[svi].f[1] = sy+dym+dxs;
-							smokev.seraphimVertices[svi].f[2] = sx+dxm+dys;
-							smokev.seraphimVertices[svi].f[3] = sy+dym-dxs;
+							smokev.seraphimVertices[svi,0] = sx+dxm-dys;
+							smokev.seraphimVertices[svi,1] = sy+dym+dxs;
+							smokev.seraphimVertices[svi,2] = sx+dxm+dys;
+							smokev.seraphimVertices[svi,3] = sy+dym-dxs;
 							svi++;
 							
-							smokev.seraphimVertices[svi].f[0] = oldscreenx-dxm+dyos;
-							smokev.seraphimVertices[svi].f[1] = oldscreeny-dym-dxos;
-							smokev.seraphimVertices[svi].f[2] = oldscreenx-dxm-dyos;
-							smokev.seraphimVertices[svi].f[3] = oldscreeny-dym+dxos;
+							smokev.seraphimVertices[svi,0] = oldscreenx-dxm+dyos;
+							smokev.seraphimVertices[svi,1] = oldscreeny-dym-dxos;
+							smokev.seraphimVertices[svi,2] = oldscreenx-dxm-dyos;
+							smokev.seraphimVertices[svi,3] = oldscreeny-dym+dxos;
 							svi++;
 						}
 					}
 				}
 			}
 
-            //TODO Fix this nonsense
-            float[,] fa = new float[smokev.seraphimColors.Length,4];//HACK non-blittable floatToVectors >:/
-            for (i = 0; i < fa.Length/4; i++)
-            {
-                fa[i,0] = smokev.seraphimColors[i].f[0];
-                fa[i, 1] = smokev.seraphimColors[i].f[1];
-                fa[i, 2] = smokev.seraphimColors[i].f[2];
-                fa[i, 3] = smokev.seraphimColors[i].f[3];
-            }
 
-            
-            
-            Gl.glColorPointer(4, Tao.OpenGl.Gl.GL_FLOAT, 0,fa/*smokev.seraphimColors*/);
+			Gl.glColorPointer(4, Tao.OpenGl.Gl.GL_FLOAT, 0,smokev.seraphimColors);
 
-            fa = new float[smokev.seraphimVertices.Length, 4];
-            for (i = 0; i < fa.Length / 4; i++)
-            {
-                fa[i, 0] = smokev.seraphimVertices[i].f[0];
-                fa[i, 1] = smokev.seraphimVertices[i].f[1];
-                fa[i, 2] = smokev.seraphimVertices[i].f[2];
-                fa[i, 3] = smokev.seraphimVertices[i].f[3];
-            }
-
-			Gl.glVertexPointer(2,Tao.OpenGl.Gl.GL_FLOAT,0,fa/*smokev.seraphimVertices*/);
-       
+			Gl.glVertexPointer(2,Tao.OpenGl.Gl.GL_FLOAT,0,smokev.seraphimVertices);
+			
 			Gl.glTexCoordPointer(2,Tao.OpenGl.Gl.GL_FLOAT,0,smokev.seraphimTextures);
 			Gl.glDrawArrays(Tao.OpenGl.Gl.GL_QUADS,0,si*4);
 
 		}
-
-		
-		
 	}
 }

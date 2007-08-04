@@ -9,46 +9,46 @@
 //------------------------------------------------------------------------------
 
 namespace FlurrySharp.Properties {
-    
-    
-    [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "8.0.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
-        
-        private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
-        
-        public static Settings Default {
-            get {
-                return defaultInstance;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("5")]
-        public int SelectedFlurry {
-            get {
-                return ((int)(this["SelectedFlurry"]));
-            }
-            set {
-                this["SelectedFlurry"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
+	
+	
+	[global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("ICSharpCode.SettingsEditor.SettingsCodeGeneratorTool", "2.1.0.2429")]
+	internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+		
+		private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
+		
+		public static Settings Default {
+			get {
+				return defaultInstance;
+			}
+		}
+		
+		[global::System.Configuration.UserScopedSettingAttribute()]
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.Configuration.DefaultSettingValueAttribute("5")]
+		public int SelectedFlurry {
+			get {
+				return ((int)(this["SelectedFlurry"]));
+			}
+			set {
+				this["SelectedFlurry"] = value;
+			}
+		}
+		
+		[global::System.Configuration.UserScopedSettingAttribute()]
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
 <ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
   <string>3 Color Crazy:{16,blue,200.0,0.7};{16,green,200.0,0.5};{16,red,200.0,0.8}</string>
   <string>Cyclic Something:{32,blue,200.0,3.0}</string>
 </ArrayOfString>")]
-        public global::System.Collections.Specialized.StringCollection ExtraFlurries {
-            get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["ExtraFlurries"]));
-            }
-            set {
-                this["ExtraFlurries"] = value;
-            }
-        }
-    }
+		public global::System.Collections.Specialized.StringCollection ExtraFlurries {
+			get {
+				return ((global::System.Collections.Specialized.StringCollection)(this["ExtraFlurries"]));
+			}
+			set {
+				this["ExtraFlurries"] = value;
+			}
+		}
+	}
 }
