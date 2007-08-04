@@ -56,12 +56,12 @@ namespace FlurrySharp
 			return (CurrentTime() - gStartTime) - delay;
 		}
 
-	
-        ///<summary>
+		
+		///<summary>
 		/// Do any initialization of the rendering context here, such as
 		/// setting background colors, setting up lighting, or performing
 		/// preliminary calculations.
-        /// </summary>
+		/// </summary>
 		public void GLSetupRC(Types.GlobalInfo a_info)
 		{
 			int i,k;
@@ -85,7 +85,7 @@ namespace FlurrySharp
 				info.spark[i].mystery = 1800 * (i + 1) / /*13*/(info.spark.Length+1);//HACK
 				info.spark[i].UpdateSpark();
 			}
-						
+			
 			//foreach(Spark s in info.spark)
 			//{
 			//	s.mystery = 1800 * (i + 1) / 13;
@@ -109,9 +109,9 @@ namespace FlurrySharp
 			Gl.glLoadIdentity();
 			
 			Gl.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-#if !USEFADEHACK
+			#if !USEFADEHACK
 			Gl.glClear(Gl.GL_COLOR_BUFFER_BIT); //HACK GLsetupRC() hack for fading startup
-#endif
+			#endif
 			
 			Gl.glEnableClientState(Gl.GL_COLOR_ARRAY);
 			Gl.glEnableClientState(Gl.GL_VERTEX_ARRAY);
@@ -134,6 +134,7 @@ namespace FlurrySharp
 			info.fTime = (float)TimeInSecondsSinceStart() + info.flurryRandomSeed;
 			info.fDeltaTime = info.fTime - info.fOldTime;
 			//_RPT1(_CRT_WARN, "base code thinks last frame took %g sec\n", info.fDeltaTime);
+			Console.Error.WriteLine("base code thinks last frame took {0} sec", info.fDeltaTime);
 			
 			info.drag = (float) Math.Pow(0.9965, info.fDeltaTime * 85.0);
 			
@@ -146,15 +147,15 @@ namespace FlurrySharp
 			//UpdateStar(info.star);
 			info.star.UpdateStar();
 			
-            //for (i = 0; i <info.numStreams; i++) 
-            //{
-            //    //UpdateSpark(info.spark[i]);
-            //    info.spark[i].UpdateSpark();
-            //}
+			//for (i = 0; i <info.numStreams; i++)
+			//{
+			//    //UpdateSpark(info.spark[i]);
+			//    info.spark[i].UpdateSpark();
+			//}
 			
-            foreach(Spark s in info.spark){
-            	s.UpdateSpark();
-            }
+			foreach(Spark s in info.spark){
+				s.UpdateSpark();
+			}
 			
 //			switch(info.optMode) {
 //				case Types.OPT_MODE_SCALAR_BASE:

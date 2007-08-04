@@ -82,7 +82,7 @@ namespace FlurrySharp
 			
 			public ColorModes currentColorMode;
 			public float streamExpansion;
-			public int numStreams=0;//HACK Where is it initialized?? is it from extern?
+			public int numStreams=0;
 			
 			public const float incohesion =0.07f;
 			public const float colorIncoherence= 0.15f;
@@ -104,7 +104,7 @@ namespace FlurrySharp
 			public int starfieldVerticesIndex;
 			public int starfieldTexturesIndex;
 			public Particle[] particles=new Particle[MAXNUMPARTICLES];
-			public Smoke smoke;//TODO convert to Smoke
+			public Smoke smoke;
 			public Star star;
 			public Spark[] spark;//=new Spark[64];
 
