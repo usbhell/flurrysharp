@@ -1,0 +1,8 @@
+bin\Debug\FlurryLauncher.exe
+bin\Debug\FlurryLauncher.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\FlurryLauncher.exe
+obj\Debug\FlurryLauncher.pdb
+bin\Release\FlurryLauncher.exe
+obj\Release\ResolveAssemblyReference.cache
+obj\Release\FlurryLauncher.exe
